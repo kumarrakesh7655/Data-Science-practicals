@@ -1,0 +1,40 @@
+12: Following table gives a frequency distribution of systolic blood pressure. Compute all the measures of dispersion.
+
+Midpoint	95.5	105.5	115.5	125.5	135.5	145.5	155.5	165.5	175.5
+Number	5	8	22	27	17	9	5	5	2
+
+Ans:
+data<-c(rep(95.5,5),rep(105.5,8),rep(115.5,22),rep(125.5,27),rep(135.5,17),rep(145.5,9),rep(155.5, 5),rep(165.5,5),rep(175.5,2))
+myfunction<-function()
+  {
+  unqe<-unique(data)
+  n<-length(unqe)
+  m<-mean(data)
+  cat("\n mean is:",m)
+  cat("\n Standard deviation is: ",sd(data))
+  cat("\n Range is :",min(data)," , ",max(data))
+  
+  for (i in 1:n) {
+    
+    cat("\n Deviation From Mean Of ",unqe[i],"is : ",unqe[i]-m)
+    
+  }
+  
+}
+
+myfunction()
+
+
+output:
+ mean is: 128.2
+ Standard deviation is:  17.97051
+ Range is : 95.5  ,  175.5
+ Deviation From Mean Of  95.5 is :  -32.7
+ Deviation From Mean Of  105.5 is :  -22.7
+ Deviation From Mean Of  115.5 is :  -12.7
+ Deviation From Mean Of  125.5 is :  -2.7
+ Deviation From Mean Of  135.5 is :  7.3
+ Deviation From Mean Of  145.5 is :  17.3
+ Deviation From Mean Of  155.5 is :  27.3
+ Deviation From Mean Of  165.5 is :  37.3
+ Deviation From Mean Of  175.5 is :  47.3

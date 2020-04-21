@@ -1,0 +1,129 @@
+question3:
+> n<-(readline(prompt="Enteranynumber:"))
+output :- Enteranynumber:7
+> cat("\n Summation Of Numbers from 1  to ",n," is :",sum(1:n))
+output :- Summation Of Numbers from 1  to  7  is : 28
+
+question4:
+> num<-as.integer(readline(prompt="Enteranynumber:"))
+Enteranynumber:8
+> for (i in 1:12) {
++     cat(num,"*",j,"=",num*j,"\n")
++ }
+Output:-
+8 * 12 = 96 
+8 * 12 = 96 
+8 * 12 = 96 
+8 * 12 = 96 
+8 * 12 = 96 
+8 * 12 = 96 
+8 * 12 = 96 
+8 * 12 = 96 
+8 * 12 = 96 
+8 * 12 = 96 
+8 * 12 = 96 
+8 * 12 = 96 
+
+question5:
+> findlarge<-function(x){
++   return(max(unlist(x)))
++ }
+> ls<-list(999,10000,34343,45435,254,45224,34232,2345,324,3,324,34)
+> cat(findlarge(ls))
+Output:-
+45435
+
+question6:
+ > ls<-list(1:10)
+> ls1<-unlist(ls)
+> ls1_len<-length(ls1)
+> runningTotal<-integer(ls1_len)
+> runningTotal[1]<-ls1[1]
+> for(i in 2:ls1_length){
++   runningTotal[i]<-runningTotal[i-1]+ls1[i]
++ }
+> for(i in 0:ls1_length){
++   if(i==0){
++     cat("List","RunningTotal\n",sep="")
++   }
++   else{
++     cat(ls1[i],runningTotal[i],"\n",sep=" ")
++   }
++ }
+Output:-
+List RunningTotal
+1    1 
+2    3 
+3    6 
+4     10 
+5     15 
+6     21 
+7     28 
+8     36 
+9     45 
+10     55
+
+question8:
+
+> linearSearch<-function(a,ls){
++ n<-1
++ for(x in ls){
++ if(a==x){
++ cat("Elementfoundatpos:",n)
++ break
++ }
++ n<-n+1
++ 
++ }
++ if(n > length(ls))print("Elementnotfound",quote=FALSE)
++ }
+> v<-100:500
+> linearSearch(499,v)
+Output:- Elementfoundatpos: 400
+
+question9:
+bs<-function(i,j,a,ls){
+  if(i > j){
+    return(-1)
+  }
+  mid=(i+j)%/%2
+  if(ls[mid]==a){
+    return(mid)
+  }
+  if(a<ls[mid]){
+    j=mid-1
+  }
+  elseif(a>ls[mid]){
+    i=mid+1
+  }
+  bs(i,j,a,ls)
+}
+binarySearch<-function(a,ls){
+  ls<-sort(ls)
+  pos<-bs(1,length(ls),a,ls)
+  if(pos==-1){
+    print("Elementnotfound",quote=FALSE)
+  }else{
+    cat("Elementfoundatposition:",pos)
+  }
+}
+binarySearch(5,4:7)
+
+question18:
+> eval<-function(x){
++   if(!is.finite(x)){
++     return(NA)
++   }
++   if(x%%2==0){
++     return(TRUE)
++   }else{
++     return(FALSE)
++   }
++ }
+> funct<-function(ls){
++   return(sapply(ls,evaluate))
++ }
+> funct(c(0:10,NA,Inf,Inf,NaN,0,50:60))
+ Output:- [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE    NA    NA    NA
+[15]    NA  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE
+Output:-

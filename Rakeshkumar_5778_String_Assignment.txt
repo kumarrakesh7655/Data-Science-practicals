@@ -1,0 +1,70 @@
+Q19:
+Ans:
+> myfunction<-function(n){
+   return((n*(n+1))/2);
+ }
+> n<-1:20
+> let<-letters[1:20]
+> seq<-sapply(n, myfunction)
+> d<-data.frame(seq,let)
+> names(d)<-c("Traingular Number","letter")
+> (vtn <- d[d$letter %in% c("a", "e", "i", "o", "u"), ])
+------------------>>>>> Ouyput <<<<<<<<---------------------
+            Traingular Number    letter
+1                  1                          a
+5                 15                         e
+9                 45                         i
+15               120                       o
+
+Q20:
+Ans:
+data<- read.csv("malenames.csv", header = TRUE, stringsAsFactors = FALSE)
+
+fetchMiddleName<-function(n){
+  ch = strsplit(n, " ")[[1]][2]
+  if(isTRUE(nchar(ch) == 1)){
+    ch = NA
+  }
+  if( isTRUE(grepl("[^a-z ]", n, ignore.case = TRUE)) ){
+    ch = NA
+  }
+  return(ch)    
+}
+myfunct <- function(n){
+  pattern = "^k(?:umar|r)?$"
+  return(grepl(pattern, n))
+}
+
+data$mid <- sapply(data$name, fetchMiddleName, USE.NAMES = FALSE)
+data <- data[complete.cases(data), ]
+kumars <- data[sapply(data$mid, myfunct), 1]
+
+
+Q21:
+Ans:
+> x <- c("Swan swam over the pond, Swim swan swim!","Swan swam back again -Well swum swan!")
+> replace<- function(n){
++   s = gsub("[^a-z ]", "", n, ignore.case = TRUE)
++   return(strsplit(s, " ")[[1]])
++ }
+> s <- sapply(x, replace, USE.NAMES = FALSE)
+> s
+------------------>>>>> Ouyput <<<<<<<<---------------------
+[[1]]
+[1] "Swan" "swam" "over" "the"  "pond" "Swim" "swan" "swim"
+
+[[2]]
+[1] "Swan"  "swam"  "back"  "again" "Well"  "swum"  "swan"
+
+
+Q21:
+Ans:
+install.packages("MASS")
+library(MASS)
+library(reshape2)
+print(head(ships,n=10))
+shipdata<-(head(ships,n=10))
+molten.ships <- melt(shipdata, id = c("type","year"))
+print(molten.ships)
+recasted.ship <- cast(molten.ships)
+recasted.ship

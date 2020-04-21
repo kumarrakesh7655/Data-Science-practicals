@@ -1,0 +1,142 @@
+question1:
+> Age <- c(22, 25, 18, 20)
+> Name <- c("James", "Mathew", "Olivia", "Stella")
+> Gender <- c("M", "M", "F", "F")
+> F1<-data.frame(Age=Age,Name=Name,Gender=Gender)
+> F1[(1:2),]
+Output:-
+  Age   Name Gender
+1  22  James      M
+2  25 Mathew      M
+
+
+
+question2:
+> F1[c("Name","Age","Gender")]
+
+
+Output:-
+    Name Age Gender
+1  James  22      M
+2 Mathew  25      M
+3 Olivia  18      F
+4 Stella  20      F
+
+
+question3:
+> F1[c("Gender","Name","Age")] # By gender
+ Output:-
+ Gender   Name Age
+1      M  James  22
+2      M Mathew  25
+3      F Olivia  18
+4      F Stella  20
+> F1[c("Age","Name","Gender")] # By Age
+Output:-
+  Age   Name Gender
+1  22  James      M
+2  25 Mathew      M
+3  18 Olivia      F
+4  20 Stella      F
+
+
+
+
+
+question4:
+>F1[c("Name","Gender")]
+
+
+Output:-
+    Name Gender
+1  James      M
+2 Mathew      M
+3 Olivia      F
+4 Stella      F
+
+
+question5:
+> names(F1)[2]<-"FirstName"
+> F1
+
+
+Output:-
+  Age FirstName Gender
+1  22     James      M
+2  25    Mathew      M
+3  18    Olivia      F
+4  20    Stella      F
+
+
+question6:
+
+> F1[order(F1$Age, decreasing = TRUE),]
+ Output:-
+ Age FirstName Gender
+2  25    Mathew      M
+1  22     James      M
+4  20    Stella      F
+3  18    Olivia      F
+> i_min<-which.min(F1$Age)
+> F1[(i_min),]
+ Output:-
+ Age FirstName Gender
+3  18    Olivia      F
+
+
+question 7:
+>data("iris")
+>iris
+
+>k[lapply(iris,class)=="numeric"] 
+>df<-as.data.frame(k)
+
+
+
+question 8:
+> tapply(iris$Sepal.Width,iris$Species,mean) 
+ output:-
+   setosa versicolor  virginica 
+     3.428      2.770      2.974 
+> tapply(iris$Sepal.Length,iris$Species,mean) 
+  output:-
+   setosa versicolor  virginica 
+     5.006      5.936      6.588 
+> tapply(iris$Petal.Length,iris$Species,mean) 
+   output:-
+  setosa versicolor  virginica 
+     1.462      4.260      5.552 
+> tapply(iris$Petal.Width,iris$Species,mean) 
+   output:-
+  setosa versicolor  virginica 
+     0.246      1.326      2.026 
+
+question 17:
+>install.packages("xlsx")
+>library("xlsx")
+>write.xlsx(iris, "one.xlsx", sheetName = "S1", col.names = TRUE, row.names = TRUE, append = FALSE)
+
+ question 22: 
+> library(reshape2)
+> x = data.frame(
++   id   = c(1, 1, 2, 2),
++   blue = c(1, 0, 1, 0),
++   red  = c(0, 1, 0, 1)
++ )
+> m<-melt(x,id.vars = "id",measure.vars = c("blue","red"))
+> m
+  id variable value
+1  1     blue     1
+2  1     blue     0
+3  2     blue     1
+4  2     blue     0
+5  1      red     0
+6  1      red     1
+7  2      red     0
+8  2      red     1
+> c<-dcast(m,variable ~ value)
+Aggregation function missing: defaulting to length
+> c
+  variable 0 1
+1     blue 2 2
+2      red 2 2
